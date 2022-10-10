@@ -18,10 +18,10 @@ import pojo.MultiFileDomain;
 public class MultiFilesController {
 	@RequestMapping("/")  //根请求直接转到multifiles.html
 	public String toMultiFile() {
-		return "multifiles";
+		return "multiFiles";
 	}
 	
-	@RequestMapping("/multifile")
+	@RequestMapping("/multiFiles")
 	public String multiFileUpload(@ModelAttribute MultiFileDomain multiFileDomain,
 													HttpServletRequest request,Model model) {
 		String realpath = request.getServletContext().getRealPath("uploadfiles");//文件放到哪个目录下

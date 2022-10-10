@@ -19,7 +19,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("cn.edu.zjweu.ie.ch2_6.controller")
+@ComponentScan("controller")
 public class SpringMVCConfig implements WebMvcConfigurer,ApplicationContextAware {
     private ApplicationContext applicationContext;
     @Override
@@ -79,7 +79,7 @@ public class SpringMVCConfig implements WebMvcConfigurer,ApplicationContextAware
         // SpringResourceTemplateResolver automatically integrates with Spring's own
         // resource resolution infrastructure, which is highly recommended.
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
-        templateResolver.setCharacterEncoding("UTF-8"); // windows榛樿涓篏BK缂栫爜锛岄渶璁剧疆銆侻AC鍜孡inux涓嬪簲鏃犻渶璁剧疆
+        templateResolver.setCharacterEncoding("UTF-8"); 
         templateResolver.setApplicationContext(this.applicationContext);
         templateResolver.setPrefix("/WEB-INF/templates/");
         templateResolver.setSuffix(".html");
@@ -115,10 +115,10 @@ public class SpringMVCConfig implements WebMvcConfigurer,ApplicationContextAware
         return viewResolver;
     }
     
-    //涓婁紶鏂囦欢鐨勯厤缃�
+
     public MultipartResolver multipartResolver() {
     	CommonsMultipartResolver multipartResolver= new CommonsMultipartResolver();
-    	multipartResolver.setMaxUploadSize(5400000);//瀛楄妭鏁般�傝姣旇緝setMaxUploadSizePerFile
+    	multipartResolver.setMaxUploadSize(5400000);
     	multipartResolver.setDefaultEncoding("UTF-8");
     	multipartResolver.setMaxUploadSizePerFile(1000000);
     	return multipartResolver;
