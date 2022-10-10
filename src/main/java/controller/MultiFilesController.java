@@ -1,4 +1,4 @@
-package cn.edu.zjweu.ie.ch2_6.controller;
+package controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import cn.edu.zjweu.ie.ch2_6.pojo.MultiFileDomain;
+import pojo.MultiFileDomain;
 
 @Controller
 public class MultiFilesController {

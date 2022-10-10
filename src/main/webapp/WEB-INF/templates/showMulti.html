@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<table>
+	<tr><td>序号</td><td>文件名</td></tr>
+	<tr th:each="file,stat:${filelist}">
+		<td th:text="${stat.count}">
+		<td><a href="#" th:href="@{download(filename=${file.name})}"  th:text="${file.name}"></a></td>
+	</tr>
+</table>
+</body>
+</html>

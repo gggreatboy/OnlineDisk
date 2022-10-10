@@ -1,4 +1,4 @@
-package cn.edu.zjweu.ie.ch2_6.config;
+package config;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;

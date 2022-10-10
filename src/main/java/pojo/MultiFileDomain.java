@@ -1,4 +1,4 @@
-package cn.edu.zjweu.ie.ch2_6.pojo;
+package pojo;
 
 import java.util.List;
 
