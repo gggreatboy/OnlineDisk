@@ -19,7 +19,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("controller")
+@ComponentScan({"controller","service"})
 public class SpringMVCConfig implements WebMvcConfigurer,ApplicationContextAware {
     private ApplicationContext applicationContext;
     @Override
@@ -115,12 +115,11 @@ public class SpringMVCConfig implements WebMvcConfigurer,ApplicationContextAware
         return viewResolver;
     }
     
-
+    @Bean
     public MultipartResolver multipartResolver() {
     	CommonsMultipartResolver multipartResolver= new CommonsMultipartResolver();
-    	multipartResolver.setMaxUploadSize(5400000);
+    	multipartResolver.setMaxUploadSize(54000000);
     	multipartResolver.setDefaultEncoding("UTF-8");
-    	multipartResolver.setMaxUploadSizePerFile(1000000);
     	return multipartResolver;
     }
 
