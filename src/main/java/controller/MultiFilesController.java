@@ -21,7 +21,7 @@ public class MultiFilesController {
 		return "multiFiles";
 	}
 	
-	@RequestMapping("/multiFiles")
+	@RequestMapping("/multifile")
 	public String multiFileUpload(@ModelAttribute MultiFileDomain multiFileDomain,
 													HttpServletRequest request,Model model) {
 		String realpath = request.getServletContext().getRealPath("uploadfiles");//文件放到哪个目录下
