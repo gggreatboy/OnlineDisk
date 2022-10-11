@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>文件下载</title>
 </head>
 <body>
-<form  action="#" th:action="@{/multifile}"  method="POST" enctype="multipart/form-data">
+<hr/>
+<form  action="#" th:action="@{/downloadfile}"  method="POST" enctype="multipart/form-data">
 		选择文件1：<input type="file" name="myfile"/><br>
 		文件描述1：<input type="text" name="description"/><br>
 		选择文件2：<input type="file" name="myfile"/><br>

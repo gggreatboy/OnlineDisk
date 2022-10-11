@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>简易网盘主页</title>
+<script>
+function gotodownload(filename)
+{
+	window.location.href = 'http://localhost:8080/OnlineDisk/downloadfile?file.name='+filename;
+}
+</script>
+</head>
+<body>
+	<table>
+	<tr><td>序号<td>|</td><td>文件名</td><td>|</td><td>选项</td></tr>
+	<tr th:each="file,stat:${filelistindex1}">
+		<td th:text="${stat.count}">
+		<td>|</td>
+		<td><a href="#" th:href="@{downloadfile(filename=${file.name})}"  th:text="${file.name}"></a></td>
+		<td>|</td>
+		<td><a href="#" th:href="@{downloadfile(filename=${file.name})}"><button th:text="下载"></button></a></td>
+	</tr>
+	</table>
+	<hr/>
+	<a href="#" th:href="@{upload}">上传</a>
+</body>
+</html>

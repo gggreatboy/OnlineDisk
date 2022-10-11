@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -20,16 +21,17 @@ import pojo.MultiFileDomain;
 public class MultiFilesController {
 	 private static final Log logger = LogFactory.getLog(MultiFilesController.class);
 	
-	@RequestMapping("/")  //根请求直接转到multifiles.html
-	public String toMultiFile() {
-		return "multiFiles";
+	@RequestMapping("/upload")  //上传请求直接转到uploadmultiFiles.html
+	public String toUploadMultiFile() {
+		return "uploadmultiFiles";
 	}
 	
-	@RequestMapping("/multifile")
+	
+	@RequestMapping("/multifileupload")
 	public String multiFileUpload(@ModelAttribute MultiFileDomain multiFileDomain,
-													HttpServletRequest request,Model model) {
-		String realpath ="E://wangpantest/upload";//文件放到哪个目录下
-		
+													HttpSession session,HttpServletRequest request,Model model) {
+
+		String realpath =request.getServletContext().getRealPath("/wangpan/");; //文件放到哪个目录下
 		File targetDir = new File(realpath);
 		if(!targetDir.exists()) {
 			targetDir.mkdirs();
@@ -61,7 +63,7 @@ public class MultiFilesController {
 		
 		File fileList[] = targetDir.listFiles();
 		model.addAttribute("filelist",fileList);
-		
+		session.setAttribute("filelist1",fileList);
 		return "showMulti";
 	}
 
