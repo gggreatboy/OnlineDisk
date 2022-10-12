@@ -18,7 +18,7 @@ public class Indexcontroller {
 		File fileListorigin[] =targetDir.listFiles();
 
 		model.addAttribute("filelistindex1",fileListorigin);
-
+		model.addAttribute("filepath",targetDir);
 		return "index";
 	}
 }

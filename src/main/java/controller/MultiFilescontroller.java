@@ -18,8 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 import pojo.MultiFileDomain;
 
 @Controller
-public class MultiFilesController {
-	 private static final Log logger = LogFactory.getLog(MultiFilesController.class);
+public class MultiFilescontroller {
+	 private static final Log logger = LogFactory.getLog(MultiFilescontroller.class);
 	
 	@RequestMapping("/upload")  //上传请求直接转到uploadmultiFiles.html
 	public String toUploadMultiFile() {
