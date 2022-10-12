@@ -9,17 +9,17 @@
 </script>
 </head>
 <body>
-	<table>
-	<tr><td>序号<td>|</td><td>文件名</td><td>|</td><td>路径</td><td>|</td><td>选项</td></tr>
+	<table width="95%" border="1" cellpadding="2" collapse="1">
+	<tr><td>序号<td>文件名</td><td>路径</td><td>选项</td></tr>
 	<tr th:each="file,stat:${filelistindex1}">
 		<td th:text="${stat.count}">
-		<td>|</td>
+
 		<td><a href="#" th:href="@{downloadfile(filename=${file.name})}"  th:text="${file.name}"></a></td>
-		<td>|</td>
+
 		<td>
 		<a th:text="${file.getCanonicalPath()}">    </a>
 		</td>
-		<td>|</td>
+
 		<td>
 		<a href="#" th:href="@{downloadfile(filename=${file.name})}"><button th:text="下载"></button></a>
 		<a href="#" target="_blank" th:href="@{modify(filepath=${file.getCanonicalPath()},filename=${file.name})}"><button th:text="重命名"></button></a>
@@ -28,5 +28,8 @@
 	</table>
 	<hr/>
 	<a href="#" th:href="@{upload}">上传</a>
+	
+	
+	
 </body>
 </html>

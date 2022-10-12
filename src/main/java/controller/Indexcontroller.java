@@ -21,4 +21,11 @@ public class Indexcontroller {
 		model.addAttribute("filepath",targetDir);
 		return "index";
 	}
+	
+	@RequestMapping("/test") 
+	public String test(HttpSession session,HttpServletRequest request,Model model) {
+
+		return "login";
+	}
+	
 }
