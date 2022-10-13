@@ -11,7 +11,10 @@ import pojo.loginBean;
 public class LoginController {
 	@RequestMapping("/login")
 	public String Login(Model model) {
-		model.addAttribute("loginBean",new loginBean());
+		loginBean loginbean =new loginBean();
+		loginbean.setUname("admin");
+		loginbean.setUpwd("");
+		model.addAttribute("loginBean",loginbean);
 		return "login";
 	}
 }
