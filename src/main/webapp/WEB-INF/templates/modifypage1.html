@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <title>Apple-like Login Form | Tutorialzine Demo</title>
+        
+        <!-- Our CSS stylesheet file -->
+        <link rel="stylesheet" th:href="@{/css/styles.css}" />
+        
+        <!--[if lt IE 9]>
+          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    
+    <body>
+
+		<div id="formContainer">
+			<h1 id="ho">重命名</h1><br/>
+      		<p id="hi">此操作将</p>
+      		<p id="hi" th:text="${filename}+'改为'"></p> <br>
+            <form action="#" th:action="modifysure" method="post">
+            <input  type="text" name="newname" th:placeholder="请在此处重命名"/>
+            <input  type="hidden" name="filepath" th:value="${filepath}"/>
+		    <input  type="submit"  value="确认" />
+			</form>
+			
+		</div>
+
+       
+        
+        <!-- JavaScript includes -->
+		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script th:src="@{/js/script.js}"></script>
+
+    </body>
+</html>
+

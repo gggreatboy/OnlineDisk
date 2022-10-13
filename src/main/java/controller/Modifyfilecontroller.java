@@ -20,7 +20,7 @@ public class Modifyfilecontroller {
 		model.addAttribute("filename",filename);
         model.addAttribute("filepath",filepath);
 			
-		return "modifypage";
+		return "modifypage1";
 	}
 	
 	@RequestMapping("/modifysure")

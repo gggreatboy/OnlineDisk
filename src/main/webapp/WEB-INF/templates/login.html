@@ -1,0 +1,64 @@
+<html>
+<html xmlns:th="https://www.thymeleaf.org">
+<meta charset="UTF-8">
+<title>登录</title>
+<link rel = "stylesheet" type="text/css"  th:href="@{/css/login.css}" />
+
+<script type="text/javascript"> 
+function validateLogin(){
+	 var sUserName = document.frmLogin.username.value ;
+	 var sPassword = document.frmLogin.userpwd.value ;
+	 if (sUserName ==""||sUserName==null){
+		alert("请输入用户名!");
+		return false;
+		 }
+	 else if (sPassword ==""||sPassword==null){
+
+		 alert("请输入密码!");
+		return false;
+	}else {
+		 return true;
+		}
+	 } 
+</script>
+</head>
+<body>
+
+	<stection>
+			<!-- 背景色 -->
+			<div class = "color"></div>
+			<div class = "color"></div>
+			<div class = "color"></div>
+			<div class = 'box'>
+				<!-- 背景圆 -->
+				<div class = "circle" style = "--x:0"></div>
+				<div class = "circle" style = "--x:1"></div>
+				<div class = "circle" style = "--x:2"></div>
+				<div class = "circle" style = "--x:3"></div>
+				<div class = "circle" style = "--x:4"></div>
+				<!-- 登录框 -->
+				<div class = 'container'>
+					<div class = "from">
+						<h2 align="center">网盘系统-[登录]</h2>
+					        <form   method="POST" th:action="@{/login}" th:object="${loginBean}" onsubmit="return validateLogin();">
+							<div class = "inputbox">
+								<input type="text" placeholder="账号" th:field ="*{uname}" maxlength="20"/>
+								<span th:errors="*{uname}"></span>
+							</div>
+							<div class = "inputbox">
+								<input type = "password" placeholder = "密码" th:field="*{upwd}" maxlength="20"/>
+								<span th:errors="*{upwd}"></span>
+							</div>
+							<div class="inputbox">
+								<input type = "submit" name="Submit" value = "登录"  />
+								<input type = "reset"  name="Reset"  value = "重置" />
+							</div>
+							<p class = "forget">没有账号？<a th: href = "@{register.html}">点击注册</a> </p>
+						  </form>	
+					</div>
+				</div>
+			</div>
+	</stection>
+
+</body>
+</html>
