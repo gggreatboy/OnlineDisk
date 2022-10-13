@@ -38,7 +38,6 @@ public class MultiFilescontroller {
 		}
 		
 		List<MultipartFile> files = multiFileDomain.getMyfile();
-		
 		for(MultipartFile file:files) {
 			if(file.isEmpty()) {
 				continue;
@@ -62,9 +61,10 @@ public class MultiFilescontroller {
 		}
 		
 		File fileList[] = targetDir.listFiles();
+		session.setAttribute("filemult",multiFileDomain);
 		model.addAttribute("filelist",fileList);
 		session.setAttribute("filelist1",fileList);
 		return "showMulti";
 	}
-
+	
 }
