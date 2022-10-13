@@ -1,7 +1,7 @@
 <html>
 <html xmlns:th="https://www.thymeleaf.org">
 <meta charset="UTF-8">
-<title>水库管理系统-登录</title>
+<title>登录</title>
 <link rel = "stylesheet" type="text/css"  th:href="@{/css/login.css}" />
 
 <script type="text/javascript"> 
@@ -39,24 +39,21 @@ function validateLogin(){
 				<!-- 登录框 -->
 				<div class = 'container'>
 					<div class = "from">
-						<h2>水库管理系统-[登录]</h2>
-					        <form method="POST" name="frmLogin" action="LoginServlet" onsubmit="return validateLogin();">
+						<h2 align="center">网盘系统-[登录]</h2>
+					        <form   method="POST" th:action="@{/login}" th:object="${loginBean}" onsubmit="return validateLogin();">
 							<div class = "inputbox">
-								<input type="text" placeholder="账号" name = "username" maxlength="20"/>
+								<input type="text" placeholder="账号" th:field ="*{uname}" maxlength="20"/>
+								<span th:errors="*{uname}"></span>
 							</div>
 							<div class = "inputbox">
-								<input type = "password" placeholder = "密码" name = "userpwd" maxlength="20"/>
+								<input type = "password" placeholder = "密码" th:field="*{upwd}" maxlength="20"/>
+								<span th:errors="*{upwd}"></span>
 							</div>
 							<div class="inputbox">
 								<input type = "submit" name="Submit" value = "登录"  />
 								<input type = "reset"  name="Reset"  value = "重置" />
 							</div>
-							<p class = "forget">忘记密码？<a href = "Findpwd.jsp">点击这里</a> </p>
-							<p class = "forget">没有账号？<a href = "register.jsp">点击注册</a> </p>
-							<% 
-	 						String errormsg=(String)request.getAttribute("errormsg");
-	                        %>
-							<p class = "forget"><%=errormsg%></p>
+							<p class = "forget">没有账号？<a th: href = "@{register.html}">点击注册</a> </p>
 						  </form>	
 					</div>
 				</div>
