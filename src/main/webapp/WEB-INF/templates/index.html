@@ -32,7 +32,7 @@ function delete1(filename){
 		<td>
 		<a href="#" th:href="@{downloadfile(filename=${file.name})}"><button th:text="下载"></button></a>
 		<a href="#" target="_blank" th:href="@{modify(filepath=${file.getCanonicalPath()},filename=${file.name})}"><button th:text="重命名"></button></a>
-		<a href="#" th:href="@{delete2(filepath=${file.getCanonicalPath()},filename=${file.name})}" ><button th:text="删除"></button></a>
+		<a href="#" th:href="@{delete2(filepath=${file.getCanonicalPath()})}" ><button th:text="删除"></button></a>
 		</td>
 	</tr>
 	</table>

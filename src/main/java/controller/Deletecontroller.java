@@ -17,9 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class Deletecontroller {
 	@RequestMapping("/delete2")
 	public String todelete(HttpSession session,HttpServletRequest request, 
-			@RequestParam("filename") String filename,
 			@RequestParam("filepath") String filepath,Model model) {
-		    Path path = Paths.get(filepath+filename);
+		    Path path = Paths.get(filepath);
 		    try {
 				Files.delete(path);
 			} catch (IOException e) {
