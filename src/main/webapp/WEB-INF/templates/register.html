@@ -1,27 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
+<!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>注册</title>
-<link rel = "stylesheet"  th:href="@{/css/login.css}"/>
+<link rel = "stylesheet" type="text/css"  th:href="@{/css/login.css}"/> 
 <script>
 
-function qq(){
-	var btn=document.getElementById("email");
-	btn.disabled=true;isemail=true;
-	c(60);
-} function c(i){
-	var btn=document.getElementById("email");
-	i--;
-	if(i==0){
-		btn.value="重新获取验证码";
-		btn.disabled=false;
-	}else{btn.value="在(" + i + ")后重新发送";
-	window.setTimeout("c("+i+")",1000);
-	}
-}
 function validateregister(){
     var check = /^(\w+([-.][A-Za-z0-9]+)*){3,18}@\w+([-.][A-Za-z0-9]+)*\.\w+([-.][A-Za-z0-9]+)*$/ ;  //邮箱验证
     var check1 = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/ ;//密码验证
@@ -43,10 +27,6 @@ function validateregister(){
 		 alert("请再次输入密码以确定！!");
 		return false;
 		}	
-	 else if (sEmail ==""){
-		 alert("请输入邮箱以完成注册！!");
-		return false;
-		}	
 	 else if (sPassword!=sPassword2){
 	    alert("两次输入密码不一致 请检查后输入！");
 		return false;
@@ -66,13 +46,9 @@ function validateregister(){
 	 else if (!check1.test(sPassword)){
 		    alert("密码设置不符合规范，密码必须包含数字和字母，请重新输入！");
 			return false;
-			}
-	 else if (!check.test(sEmail)){
-		    alert("邮箱格式不符合规范，请重新输入！");
-			return false;
-			}	 
+			} 
 	 else{
-		 if(confirm("注册所需信息核验通过，点击确定前往邮箱验证结果页面！！")){
+		 if(confirm("注册所需信息核验通过！！")){
 			 return true;}
 			 else{return false;}
 			}
@@ -95,37 +71,24 @@ function validateregister(){
 				<!-- 注册框 -->
 				<div class = 'container'>
 					<div class = "from">
-						<h2>注册新账号</h2>
-					        <form method="POST"  name="regLogin" action=""  target="_blank" >
+						<h2 align="center">注册新账号</h2>
+					        <form   method="POST" th:action="@{/register}" th:object="${loginBean}" target="_blank"> 
 							<div class = "inputbox">
-								<p id="wenzi">账号名：</p><input type="text" placeholder="新的账号（6-20位）" name = "userName" maxlength="20"/>
+								<p id="wenzi">账号名：</p><input type="text" placeholder="新的账号（6-20位）" th:field ="*{uname}" maxlength="20"/>
 							    <p id="tishi">提示：账号必须由字母或者数字构成！</p>
 							</div>
 							<div class = "inputbox">
-								<p id="wenzi">密码：</p><input type = "password" placeholder = "必须包含数字和字母（8-16位）" name = "userPwd" maxlength="16"/>
+								<p id="wenzi">密码：</p><input type = "password" placeholder = "必须包含数字和字母（8-16位）" th:field="*{upwd}" maxlength="16"/>
 							</div>
 							<div class = "inputbox">
-								<p id="wenzi">重复你的密码：</p><input type = "password" placeholder = "重复密码" name = "userPwd2" maxlength="16"/>
+								<p id="wenzi">重复你的密码：</p><input type = "password" placeholder = "重复密码" th:field="*{upwd2}" maxlength="16"/>
 							</div>
-							<div class = "inputbox">
-								<p id="wenzi">邮箱地址：</p><input type = "text" placeholder = "用于密码找回" name = "userEmail" id="remail" maxlength="25"/>
-							</div>
+																	
 							<div class="inputbox">
-							<input type = "button"  name="mail" id="email" value = "发送邮箱验证码" onclick="qq();regLogin.action='ResServlet';regLogin.submit();" />
-							</div>
-							<div class = "inputbox">
-								<p id="wenzi">邮箱验证码：</p><input type = "text" placeholder = "验证码" name = "Emailv" maxlength="10" />
-							</div>
-							<div class="inputbox">
-								<input type = "submit" name="Submit" value = "注册" onclick="validateregister();regLogin.action='RegistServlet';"/>
+								<input type = "submit" name="Submit" value = "注册" />
 								<input type = "reset"  name="Reset"  value = "重置" />
 							</div>
-							<p class = "forget">忘记密码？<a href = "Findpwd.jsp">点击这里</a> </p>
-							<p class = "forget">点击返回：<a href = "login.jsp">登录界面</a> </p>	
-							<% 
-	 						String message1=(String)request.getAttribute("message1");
-	                        %>
-							<p class = "forget"><%=message1%></p>					
+							
 						  </form>	
 						  
 

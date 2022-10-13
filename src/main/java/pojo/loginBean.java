@@ -3,6 +3,15 @@ package pojo;
 public class loginBean {
 	private String uname;
 	private String upwd;
+	private String upwd2;
+	
+	public String getUpwd2() {
+		return upwd2;
+	}
+
+	public void setUpwd2(String upwd2) {
+		this.upwd2 = upwd2;
+	}
 
 	public String getUname() {
 		return uname;
