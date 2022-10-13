@@ -4,7 +4,16 @@
 <meta charset="UTF-8">
 <title>简易网盘主页</title>
 <script>
-
+function delete1(filename){
+	var r=confirm("确认要删除文件："+filename)
+	if(r==true){
+		return true
+	}
+	else
+    {
+		return false
+    }
+}
 
 </script>
 </head>
@@ -23,6 +32,7 @@
 		<td>
 		<a href="#" th:href="@{downloadfile(filename=${file.name})}"><button th:text="下载"></button></a>
 		<a href="#" target="_blank" th:href="@{modify(filepath=${file.getCanonicalPath()},filename=${file.name})}"><button th:text="重命名"></button></a>
+		<a href="#" th:href="@{delete2(filepath=${file.getCanonicalPath()},filename=${file.name})}" ><button th:text="删除"></button></a>
 		</td>
 	</tr>
 	</table>
