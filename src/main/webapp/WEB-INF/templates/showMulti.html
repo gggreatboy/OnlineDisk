@@ -15,6 +15,6 @@
 		<td><a href="#" th:href="@{downloadfile(filename=${file.name})}"  th:text="${file.length()/1024+'KB'}"></a></td>
 	</tr>
 </table>
-<hr><h1>点击<a href="/OnlineDisk/"  >此处回到主页！</a></h1>
+<hr><h1>点击<a th:href="@{backtoindex}"   >此处回到主页！</a></h1>
 </body>
 </html>

@@ -39,6 +39,7 @@ public class SpringMVCConfig implements WebMvcConfigurer,ApplicationContextAware
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/images/**").addResourceLocations("/images/");
         registry.addResourceHandler("/css/**").addResourceLocations("/css/");
+        registry.addResourceHandler("/img/**").addResourceLocations("/img/");
         registry.addResourceHandler("/js/**").addResourceLocations("/js/");
         registry.addResourceHandler("/wangpan/**").addResourceLocations("/wangpan/");
     }

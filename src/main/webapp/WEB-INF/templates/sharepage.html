@@ -2,51 +2,23 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>简易网盘主页</title>
+<title>简易网盘共享空间</title>
 <link rel = "stylesheet" type="text/css"  th:href="@{/css/index.css}" />
-<script>
-function delete1(){
-	var r=confirm("确认要删除文件?")
-	if(r==true){
-		return true
-	}
-	else
-    {
-		return false
-    }
-}
 
-function share1(){
-	var a=confirm("确认要共享文件?所有用户将在共享空间看到你的共享文件")
-	if(a==true){
-		return true
-	}
-	else
-	{
-		return false
-	}
-}
-
-</script>
 </head>
 <body>
      <div class="bannerbox">
             <img width="100%" height="10%" th:src="@{/img/1234.png}">
      </div>
      <h2 align="center">OnlineDisk系统</h2>
-     <marquee behavior="alternate" bgcolor="#FFA07A"><h3> 欢迎来到OnlineDisk！！！(本系统由王艺祺-梅跃宗联合制作完成！)</h3></marquee>
+     <marquee behavior="alternate" bgcolor="#FFA07A"><h3> 欢迎来到OnlineDisk共享空间！！！</h3></marquee>
      <h2>欢迎用户：<a href="#" th:text="${#httpSession.getAttribute('username')}"></a></h2><hr>
-     <h2>私人根目录：<span  th:text="${#servletContext.getAttribute('userpath')}"></span></h2>
+ 
      <br><br>
-     <table width="100%" border="1" cellpadding="2" collapse="1">     
-     <tr>
-     <th>总空间：100,000,000 KB</th>
-     <th>当前已用空间：<span  th:text="${#httpSession.getAttribute('Store')}"></span>KB</th>
-     <th>剩余可用空间：<span  th:text="${100000000-#httpSession.getAttribute('Store')}"></span>KB</th>
-     </tr></table>
+
      <br/><br/><br/>
-     <a class="upload" href="#" th:href="@{upload}">点击上传</a><span class="upload">||</span>
-     <a class="upload" href="#" th:href="@{upload}">点击进入共享空间</a><br>
+
+     <a class="upload" href="#" th:href="@{backtoindex}">点击返回主页</a><br>
       <br/><br/><br/>
 	<table class="hovertable" id="table1" width="95%" border="1" cellpadding="2" collapse="1">
 	<tr>
@@ -71,30 +43,20 @@ function share1(){
 		<button class="custom-btn btn-1" th:text="下载">
 		</button>
 		</a>
-		<a href="#" target="_blank" th:href="@{modify(filepath=${file.getCanonicalPath()},filename=${file.name})}"><button class="custom-btn btn-1" th:text="重命名"></button></a>
-		<a href="#" onclick="return delete1();" th:href="@{delete2(file=${file})}" ><button class="custom-btn btn-1" th:text="删除"></button></a>
-		<a href="#" onclick="return share1();" th:href="@{sharetoplace(file=${file})}" ><button class="custom-btn btn-1" th:text="共享"></button></a>
 		</td>
 		<td>
-
+		<span th:if="${#servletContext.getAttribute(file.name)}!=null">
 		<span  th:text="${#servletContext.getAttribute(file.name)}"></span>
-
+		</span>
 		</td>
 		<td><a href="#"  th:text="${file.length()/1024+'KB'}"></a></td>
 	</tr>
 	</table>
 	 <br/><br/><br/>
 
-	<a class="upload" href="#" th:href="@{upload}">点击上传</a><span class="upload">||</span>
-	<a class="upload" href="#" th:href="@{openshare}">点击进入共享空间</a><br>
+	<a class="upload" href="#" th:href="@{backtoindex}">点击返回主页</a><br>
 	<hr/>
-	<h3>当前文件存储目录为：<a  th:text="${#httpSession.getAttribute('pathorigin1')}"></a></h3><br><br>
-    <form action="#" method="POST" th:action="@{/newpath}">
-    创建新目录:(输入/个人根目录/后面的内容)<br>
-	<input type="text" placeholder="/wangpan/···" name="newpath" maxlength="20"/><br>
-	<input type = "submit" name="Submit" value = "确认"  />
-	</form>
-	<a  th:text="${#httpSession.getAttribute('msg')}"></a>
+	
 </body>
 
 <style>

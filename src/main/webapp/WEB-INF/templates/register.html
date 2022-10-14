@@ -10,11 +10,9 @@ function validateregister(){
     var check = /^(\w+([-.][A-Za-z0-9]+)*){3,18}@\w+([-.][A-Za-z0-9]+)*\.\w+([-.][A-Za-z0-9]+)*$/ ;  //邮箱验证
     var check1 = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/ ;//密码验证
     var check2 = /^[a-zA-Z0-9]{6,20}$/;//账号验证
-	var sUserName = document.regLogin.userName.value ;//正则表达式使用    var check=/  /;        包含
-	 var sPassword = document.regLogin.userPwd.value ;
-	 var sPassword2 = document.regLogin.userPwd2.value ;
-	 var sEmail = document.regLogin.userEmail.value;   
-	 var codeinput = document.regLogin.Emailv.value;
+	var sUserName = document.regLogin.username.value ;//正则表达式使用    var check=/  /;        包含
+	 var sPassword = document.regLogin.userpwd.value ;
+	 var sPassword2 = document.regLogin.userpwd2.value ;
 	 if (sUserName ==""){
 		alert("请输入用户名!");
 		return false;
@@ -72,23 +70,23 @@ function validateregister(){
 				<div class = 'container'>
 					<div class = "from">
 						<h2 align="center">注册新账号</h2>
-					        <form   method="POST" th:action="@{/register}" th:object="${loginBean}" target="_blank"> 
+					        <form   method="POST" name="regLogin" th:action="@{/registerconfirm}"  target="_blank"> 
 							<div class = "inputbox">
-								<p id="wenzi">账号名：</p><input type="text" placeholder="新的账号（6-20位）" th:field ="*{uname}" maxlength="20"/>
+								<p id="wenzi">账号名：</p><input type="text" placeholder="新的账号（6-20位）" name = "username" maxlength="20"/>
 							    <p id="tishi">提示：账号必须由字母或者数字构成！</p>
 							</div>
 							<div class = "inputbox">
-								<p id="wenzi">密码：</p><input type = "password" placeholder = "必须包含数字和字母（8-16位）" th:field="*{upwd}" maxlength="16"/>
+								<p id="wenzi">密码：</p><input type = "password" placeholder = "必须包含数字和字母（8-16位）"  name = "userpwd" maxlength="16"/>
 							</div>
 							<div class = "inputbox">
-								<p id="wenzi">重复你的密码：</p><input type = "password" placeholder = "重复密码" th:field="*{upwd2}" maxlength="16"/>
+								<p id="wenzi">重复你的密码：</p><input type = "password" placeholder = "重复密码" name = "userpwd2" maxlength="16"/>
 							</div>
 																	
 							<div class="inputbox">
-								<input type = "submit" name="Submit" value = "注册" />
+								<input type = "submit" name="Submit" value = "注册" onclick="return validateregister();"/>
 								<input type = "reset"  name="Reset"  value = "重置" />
 							</div>
-							
+							<p class = "forget">点击返回：<a th:href ="@{/login}">登录界面</a> </p>	
 						  </form>	
 						  
 

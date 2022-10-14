@@ -2,6 +2,8 @@ package controller;
 
 import java.io.File;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.io.FileUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,9 +21,11 @@ public class Downloadcontroller {
 	}
 	
 	@RequestMapping("/downloadfile")
-	public ResponseEntity<byte[]> download(HttpServletRequest request, @RequestParam("filename") String filename)throws Exception {
+	public ResponseEntity<byte[]> download(HttpSession session,HttpServletRequest request, @RequestParam("filename") String filename)throws Exception {
 	   //下载文件路径
-	   String path = request.getServletContext().getRealPath("/wangpan/");
+		String userpath=(String) session.getAttribute("username");
+		String path =request.getServletContext().getRealPath("/"+userpath+"/");
+
 	   File file = new File(path + File.separator + filename);
 	   HttpHeaders headers = new HttpHeaders();  
 	   //下载显示的文件名，解决中文名称乱码问题

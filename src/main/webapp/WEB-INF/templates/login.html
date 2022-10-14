@@ -1,4 +1,4 @@
-							<p class = "forget">没有账号？<a th: href = "@{/register}">点击注册</a> </p> 
+
 <html>
 <html xmlns:th="https://www.thymeleaf.org">
 <meta charset="UTF-8">
@@ -41,20 +41,21 @@ function validateLogin(){
 				<div class = 'container'>
 					<div class = "from">
 						<h2 align="center">网盘系统-[登录]</h2>
-					        <form   method="POST" th:action="@{/login}" th:object="${loginBean}" onsubmit="return validateLogin();">
+					        <form   method="POST" th:action="@{/loginconfirm}" th:object="${User}" onsubmit="return validateLogin();">
 							<div class = "inputbox">
-								<input type="text" placeholder="账号" th:field ="*{uname}" maxlength="20"/>
-								<span th:errors="*{uname}"></span>
+								<input type="text" placeholder="账号" th:field ="*{username}" maxlength="20"/>
+								<span th:errors="*{username}"></span>
 							</div>
 							<div class = "inputbox">
-								<input type = "password" placeholder = "密码" th:field="*{upwd}" maxlength="20"/>
-								<span th:errors="*{upwd}"></span>
+								<input type = "password" placeholder = "密码" th:field="*{userpwd}" maxlength="20"/>
+								<span th:errors="*{userpwd}"></span>
 							</div>
 							<div class="inputbox">
 								<input type = "submit" name="Submit" value = "登录"  />
 								<input type = "reset"  name="Reset"  value = "重置" />
+								
 							</div>
-							
+							<p class = "forget">没有账号？<a th:href = "@{/toregister}">点击注册</a> </p>
 						  </form>	
 					</div>
 				</div>
