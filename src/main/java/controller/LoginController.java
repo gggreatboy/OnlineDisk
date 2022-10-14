@@ -47,11 +47,13 @@ public class LoginController {
 		File targetDir = new File(path);
 		File fileListorigin[] =targetDir.listFiles();
 		long store=0;
+		
+		if(fileListorigin!=null) {
 		for(int i =0;i<fileListorigin.length;i=i+1) {
 			store+=(fileListorigin[i].length())/1024;
 		}
 		session.setAttribute("Store", store);
-		
+		}
 		model.addAttribute("filelistindex1",fileListorigin);
 		model.addAttribute("filepath",targetDir);
         session.setAttribute("filepathnow",targetDir);
