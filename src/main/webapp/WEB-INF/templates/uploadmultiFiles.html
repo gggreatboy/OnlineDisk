@@ -3,17 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <title>文件上传</title>
+<style>
+#formContainer{
+	width:288px;
+	height:321px;
+	margin:0 auto;
+	position:relative;
+	z-index:1;
+
+
+	-moz-perspective: 800px;
+	-webkit-perspective: 800px;
+	perspective: 800px;
+}
+
+#formContainer form{
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+    padding:20px 20px 20px 20px;
+
+	/* Enabling 3d space for the transforms */
+	-moz-transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	
+	/* When the forms are flipped, they will be hidden */
+	-moz-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	
+	/* Enabling a smooth animated transition */
+	-moz-transition:0.8s;
+	-webkit-transition:0.8s;
+	transition:0.8s;
+	
+	/* Configure a keyframe animation for Firefox */
+	-moz-animation: pulse 2s infinite;
+	
+	/* Configure it for Chrome and Safari */
+	-webkit-animation: pulse 2s infinite;
+}
+
+
+/* Firefox Keyframe Animation */
+@-moz-keyframes pulse{
+	0%{		box-shadow:0 0 1px #008aff;}
+	50%{	box-shadow:0 0 8px #008aff;}
+	100%{	box-shadow:0 0 1px #008aff;}
+}
+
+/* Webkit keyframe animation */
+@-webkit-keyframes pulse{
+	0%{		box-shadow:0 0 1px #008aff;}
+	50%{	box-shadow:0 0 10px #008aff;}
+	100%{	box-shadow:0 0 1px #008aff;}
+}
+
+.filediv{
+    position: relative;
+    margin:0 auto;
+}
+.filediv input{
+    opacity: 0;
+    width: 100px;
+    height: 35px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 99;
+}
+.filediv div{
+    height: 35px;
+    line-height: 35px;
+    background-color: #03a9f4;
+    color: #fff;
+    width: 100px;
+    text-align: center;
+    font-size: 14px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 98;
+}
+input[type="text"], textarea, select {
+        border: 3px solid #999;
+}
+input[type="text"]:focus textarea:focus select:focus{
+        border: 3px solid #008c8c;
+}
+
+</style>
+<script>
+	function confirmupload(){
+		
+	}
+</script>
 </head>
 <body>
+<h2 align="center">OnlineDisk系统-文件上传</h2>
+<div id="formContainer">
 <form  action="#" th:action="@{/multifileupload}"  method="POST" enctype="multipart/form-data">
-		选择文件1：<input type="file" name="myfile"/><br>
-		文件描述1：<input type="text" name="description"/><br>
-		选择文件2：<input type="file" name="myfile"/><br>
-		文件描述2：<input type="text" name="description"/><br>
-		选择文件3：<input type="file" name="myfile"/><br>
-		文件描述3：<input type="text" name="description"/><br>
-		<input type="submit" value="提交"/>
-</form>
 
+		选择文件1：<input type="file" name="myfile"/><br>
+		文件描述1：<input type="text" name="description"/><br/><br/>
+		选择文件2：<input type="file" name="myfile"/><br>
+		文件描述2：<input type="text" name="description"/><br/><br/>
+		选择文件3：<input type="file" name="myfile"/><br>
+		文件描述3：<input type="text" name="description"/><br/><br/>
+		<hr/>
+		
+		<div class="filediv" align="center">
+		<input type="submit" value="提交" id="Submit" onclick="return confirmupload();"/>
+		<div >确认上传</div>
+    </div>
+</form>
+</div>
 </body>
 </html>

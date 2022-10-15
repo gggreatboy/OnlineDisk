@@ -24,7 +24,9 @@ public class Sharecontroller {
 		String sharepath =(String) request.getServletContext().getAttribute("sharepath");
 		File share=new File(sharepath);
 		File Truefile=new File(file);
-		
+		if(!share.exists()) {
+			share.mkdirs();
+		}
 		ioFile iofile=new ioFile();
 		try {
 			iofile.copyFolder(Truefile, share);
