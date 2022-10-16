@@ -35,7 +35,7 @@ function share1(){
             <img width="100%" height="10%" th:src="@{/img/1234.png}">
      </div>
      <h2 align="center">OnlineDisk系统-主页</h2>
-     <h2>欢迎用户：<a href="#" th:text="${#httpSession.getAttribute('username')}"></a> &nbsp;&nbsp;&nbsp;&nbsp;
+     <h2><a href="#" th:text="${#httpSession.getAttribute('msg')}"></a> &nbsp;&nbsp;&nbsp;&nbsp;
      私人空间根目录：<span  th:text="${#servletContext.getAttribute('userpath')}"></span></h2><hr>
 
      <br><br>
@@ -94,7 +94,7 @@ function share1(){
     创建新目录:(输入/个人根目录/后面的内容)<br>
 	<input type="text" placeholder="/wangpan/···" name="newpath" maxlength="20"/><br>
 	<input type = "submit" name="Submit" value = "确认"  />
-	</form>
+	</form><br/>
 	<a  th:text="${#httpSession.getAttribute('msg')}"></a>
 </body>
 

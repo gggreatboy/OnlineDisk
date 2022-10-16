@@ -74,6 +74,7 @@
     left: 0;
     top: 0;
     z-index: 99;
+    padding:5px 5px 5px 5px;
 }
 .filediv div{
     height: 35px;
@@ -87,6 +88,7 @@
     top: 0;
     left: 0;
     z-index: 98;
+     
 }
 input[type="text"], textarea, select {
         border: 3px solid #999;
@@ -97,15 +99,28 @@ input[type="text"]:focus textarea:focus select:focus{
 
 </style>
 <script>
-	function confirmupload(){
-		
-	}
+function confirmupload(){
+		 var sfileName = document.frmupload.myfile.value ;
+		 var sfileDes = document.frmupload.description.value ;
+		 if (sfileName==null){
+				alert("请点击上传文件!");
+				return false;
+				 }	 
+		        else if (sfileDes==null){
+
+					 alert("请输入文件描述!");
+					return false;
+				}else {
+					 return true;
+				}
+}
+
 </script>
 </head>
 <body>
 <h2 align="center">OnlineDisk系统-文件上传</h2>
 <div id="formContainer">
-<form  action="#" th:action="@{/multifileupload}"  method="POST" enctype="multipart/form-data">
+<form  action="#" th:action="@{/multifileupload}" name="frmupload" method="POST" enctype="multipart/form-data">
 
 		选择文件1：<input type="file" name="myfile"/><br>
 		文件描述1：<input type="text" name="description"/><br/><br/>
@@ -118,8 +133,12 @@ input[type="text"]:focus textarea:focus select:focus{
 		<div class="filediv" align="center">
 		<input type="submit" value="提交" id="Submit" onclick="return confirmupload();"/>
 		<div >确认上传</div>
-    </div>
+		</div>
+
 </form>
+
 </div>
+<br/><br/><br/><br/><br/>
+<h2 align="center">点击<a th:href="@{backtoindex}"   >此处回到主页！</a></h2>
 </body>
 </html>

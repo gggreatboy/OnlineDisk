@@ -31,9 +31,10 @@ public class LoginController {
 		String username= user.getUsername();
 		String userpwd=  user.getUserpwd();
 		model.addAttribute("username",username);
+		String isok="";
 		Link link=new Link();
 		try {
-			link.findUser(username, userpwd);
+			isok=link.findUser(username, userpwd);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -41,6 +42,7 @@ public class LoginController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		String kongjian=username;
 		String path = request.getServletContext().getRealPath("/"+kongjian+"/");
 		String sharepath = request.getServletContext().getRealPath("/shareplacejust/");
@@ -52,6 +54,9 @@ public class LoginController {
 		for(int i =0;i<fileListorigin.length;i=i+1) {
 			store+=(fileListorigin[i].length())/1024;
 		}
+		}
+		if(isok!="") {
+			session.setAttribute("msg", isok+"用户登录成功！欢迎回来");
 		}
 		session.setAttribute("Store", store);
 		model.addAttribute("filelistindex1",fileListorigin);
